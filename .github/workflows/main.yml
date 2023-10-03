@@ -1,0 +1,29 @@
+name: challenge
+on: push
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: saydate
+        run: echo "$now"
+  job2:
+    name: Second Job
+    runs-on: windows-latest
+    steps:
+      - name: saydate
+        run: Get-Date
+  job3:
+    name: Third Job
+    runs-on: macos-latest
+    steps:
+      - name: saydate
+        run: echo "$now"
+  job4:
+    name: Fourth Job
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: saydate
+        run: echo "$now"
